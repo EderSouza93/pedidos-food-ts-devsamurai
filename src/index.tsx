@@ -1,12 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./styles/global";
+import { Theme } from "./styles/Theme";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const container = document.getElementById("root"); 
+if(!container) {
+  throw new Error('Falha ao encontrar o elemento raiz');
+}
+
+const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={Theme}>
     <App />
+    <GlobalStyle />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
